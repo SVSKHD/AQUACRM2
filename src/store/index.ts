@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {
   key: "root",
   storage,
-  whitelist: ["counter"], // Specify which reducers to persist
+  whitelist: ["user"], // Specify which reducers to persist
 };
 
 // Create a persisted reducer

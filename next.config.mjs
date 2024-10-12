@@ -6,7 +6,7 @@ const nextConfig = {
   },
 
   env: {
-    url: "https://aquakart.co.in/",
+    url: "https://api.aquakart.co.in",
   },
 };
 
