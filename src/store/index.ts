@@ -1,21 +1,22 @@
 // src/store/index.ts
 
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import counterReducer from './counterSlice';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { persistReducer, persistStore, PersistConfig } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import counterReducer from "./counterSlice";
+import userReducer from "./authSlice";
 
 // Create the root reducer
 const rootReducer = combineReducers({
   counter: counterReducer,
-  // Add other reducers here
+  user: userReducer,
 });
 
 // Configure persist settings
 const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {
-  key: 'root',
+  key: "root",
   storage,
-  whitelist: ['counter'], // Specify which reducers to persist
+  whitelist: ["counter"], // Specify which reducers to persist
 };
 
 // Create a persisted reducer

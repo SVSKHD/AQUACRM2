@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -10,7 +10,7 @@ import {
   MenuItem,
   MenuItems,
   TransitionChild,
-} from '@headlessui/react'
+} from "@headlessui/react";
 import {
   Bars3Icon,
   BellIcon,
@@ -22,8 +22,11 @@ import {
   HomeIcon,
   UsersIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+} from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/20/solid";
 
 // Updated interface for NavigationItem
 interface NavigationItem {
@@ -41,28 +44,28 @@ type Team = {
 };
 
 const navigation: NavigationItem[] = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
-]
+  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
+  { name: "Team", href: "#", icon: UsersIcon, current: false },
+  { name: "Projects", href: "#", icon: FolderIcon, current: false },
+  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
+  { name: "Documents", href: "#", icon: DocumentDuplicateIcon, current: false },
+  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
+];
 
 const teams: Team[] = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
+  { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
+  { id: 2, name: "Tailwind Labs", href: "#", initial: "T", current: false },
+  { id: 3, name: "Workcation", href: "#", initial: "W", current: false },
+];
 
 const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+  { name: "Your profile", href: "#" },
+  { name: "Sign out", href: "#" },
+];
 
 // Helper function for class names
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 // Props for Example component
@@ -71,12 +74,16 @@ interface ExampleProps {
 }
 
 export default function AquaHomeLayout({ children }: ExampleProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
       <div>
-        <Dialog open={sidebarOpen} onClose={setSidebarOpen} className="relative z-50 lg:hidden">
+        <Dialog
+          open={sidebarOpen}
+          onClose={setSidebarOpen}
+          className="relative z-50 lg:hidden"
+        >
           <DialogBackdrop
             transition
             className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
@@ -89,9 +96,16 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
             >
               <TransitionChild>
                 <div className="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out data-[closed]:opacity-0">
-                  <button type="button" onClick={() => setSidebarOpen(false)} className="-m-2.5 p-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setSidebarOpen(false)}
+                    className="-m-2.5 p-2.5"
+                  >
                     <span className="sr-only">Close sidebar</span>
-                    <XMarkIcon aria-hidden="true" className="h-6 w-6 text-white" />
+                    <XMarkIcon
+                      aria-hidden="true"
+                      className="h-6 w-6 text-white"
+                    />
                   </button>
                 </div>
               </TransitionChild>
@@ -115,12 +129,15 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                               href={item.href}
                               className={classNames(
                                 item.current
-                                  ? 'bg-gray-800 text-white'
-                                  : 'text-gray-400 hover:bg-gray-800 hover:text-white',
-                                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                                  ? "bg-gray-800 text-white"
+                                  : "text-gray-400 hover:bg-gray-800 hover:text-white",
+                                "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6",
                               )}
                             >
-                              <item.icon aria-hidden="true" className="h-6 w-6 shrink-0" />
+                              <item.icon
+                                aria-hidden="true"
+                                className="h-6 w-6 shrink-0"
+                              />
                               {item.name}
                             </a>
                           </li>
@@ -128,7 +145,9 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                       </ul>
                     </li>
                     <li>
-                      <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+                      <div className="text-xs font-semibold leading-6 text-gray-400">
+                        Your teams
+                      </div>
                       <ul role="list" className="-mx-2 mt-2 space-y-1">
                         {teams.map((team) => (
                           <li key={team.name}>
@@ -136,9 +155,9 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                               href={team.href}
                               className={classNames(
                                 team.current
-                                  ? 'bg-gray-800 text-white'
-                                  : 'text-gray-400 hover:bg-gray-800 hover:text-white',
-                                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                                  ? "bg-gray-800 text-white"
+                                  : "text-gray-400 hover:bg-gray-800 hover:text-white",
+                                "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6",
                               )}
                             >
                               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
@@ -155,7 +174,10 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                         href="#"
                         className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                       >
-                        <Cog6ToothIcon aria-hidden="true" className="h-6 w-6 shrink-0" />
+                        <Cog6ToothIcon
+                          aria-hidden="true"
+                          className="h-6 w-6 shrink-0"
+                        />
                         Settings
                       </a>
                     </li>
@@ -186,12 +208,15 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-800 text-white'
-                              : 'text-gray-400 hover:bg-gray-800 hover:text-white',
-                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                              ? "bg-gray-800 text-white"
+                              : "text-gray-400 hover:bg-gray-800 hover:text-white",
+                            "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6",
                           )}
                         >
-                          <item.icon aria-hidden="true" className="h-6 w-6 shrink-0" />
+                          <item.icon
+                            aria-hidden="true"
+                            className="h-6 w-6 shrink-0"
+                          />
                           {item.name}
                         </a>
                       </li>
@@ -199,7 +224,9 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                   </ul>
                 </li>
                 <li>
-                  <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+                  <div className="text-xs font-semibold leading-6 text-gray-400">
+                    Your teams
+                  </div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
                       <li key={team.name}>
@@ -207,14 +234,14 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                           href={team.href}
                           className={classNames(
                             team.current
-                              ? 'bg-gray-800 text-white'
-                              : 'text-gray-400 hover:bg-gray-800 hover:text-white',
-                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                              ? "bg-gray-800 text-white"
+                              : "text-gray-400 hover:bg-gray-800 hover:text-white",
+                            "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6",
                           )}
                         >
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
-                              {team.initial}
-                            </span>
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
+                            {team.initial}
+                          </span>
                           <span className="truncate">{team.name}</span>
                         </a>
                       </li>
@@ -226,7 +253,10 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                     href="#"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                   >
-                    <Cog6ToothIcon aria-hidden="true" className="h-6 w-6 shrink-0" />
+                    <Cog6ToothIcon
+                      aria-hidden="true"
+                      className="h-6 w-6 shrink-0"
+                    />
                     Settings
                   </a>
                 </li>
@@ -237,13 +267,20 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
 
         <div className="lg:pl-72">
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-            <button type="button" onClick={() => setSidebarOpen(true)} className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(true)}
+              className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+            >
               <span className="sr-only">Open sidebar</span>
               <Bars3Icon aria-hidden="true" className="h-6 w-6" />
             </button>
 
             {/* Separator */}
-            <div aria-hidden="true" className="h-6 w-px bg-gray-900/10 lg:hidden" />
+            <div
+              aria-hidden="true"
+              className="h-6 w-px bg-gray-900/10 lg:hidden"
+            />
 
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <form action="#" method="GET" className="relative flex flex-1">
@@ -263,13 +300,19 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                 />
               </form>
               <div className="flex items-center gap-x-4 lg:gap-x-6">
-                <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+                <button
+                  type="button"
+                  className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+                >
                   <span className="sr-only">View notifications</span>
                   <BellIcon aria-hidden="true" className="h-6 w-6" />
                 </button>
 
                 {/* Separator */}
-                <div aria-hidden="true" className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" />
+                <div
+                  aria-hidden="true"
+                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"
+                />
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative">
@@ -281,10 +324,16 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
                       className="h-8 w-8 rounded-full bg-gray-50"
                     />
                     <span className="hidden lg:flex lg:items-center">
-                      <span aria-hidden="true" className="ml-4 text-sm font-semibold leading-6 text-gray-900">
+                      <span
+                        aria-hidden="true"
+                        className="ml-4 text-sm font-semibold leading-6 text-gray-900"
+                      >
                         Tom Cook
                       </span>
-                      <ChevronDownIcon aria-hidden="true" className="ml-2 h-5 w-5 text-gray-400" />
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="ml-2 h-5 w-5 text-gray-400"
+                      />
                     </span>
                   </MenuButton>
                   <MenuItems
@@ -313,5 +362,5 @@ export default function AquaHomeLayout({ children }: ExampleProps) {
         </div>
       </div>
     </>
-  )
+  );
 }
