@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import AquaInvoiceFilter from "./filter"
 import { useSelector } from "react-redux"
 import AquaInvoiceOperations from "@/services/invoices"
+import AquaInvoiceTable from "./invoicetable"
 
 
 const AquaInvoice = () =>{
@@ -20,9 +21,9 @@ const AquaInvoice = () =>{
 return(
     <>
     <div className="m-3">
-        <AquaInvoiceFilter/>
+        <AquaInvoiceFilter totalInvoices={invoices.length}/>
     <h1>Invoices</h1>
-    {invoices.length}
+    <AquaInvoiceTable/>
     </div>
     </>
 )
